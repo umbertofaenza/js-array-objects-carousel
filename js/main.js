@@ -32,6 +32,10 @@ const cardsEl = document.getElementById("cards");
 const nextBtn = document.getElementById("next-btn");
 const prevBtn = document.getElementById("prev-btn");
 
+const totalImages = document.getElementsByClassName("inactive");
+// const totalTitles = document.getElementsByClassName("inactive");
+// const totalDescription = document.getElementsByClassName("inactive");
+
 //* insert images on page html
 for (const object of images) {
   cardsEl.innerHTML += `
@@ -63,29 +67,36 @@ document
 
 //* next image button
 nextBtn.addEventListener("click", function () {
-  // image
   document
     .getElementsByClassName("inactive")
     [currentImgIndex].classList.remove("active");
-  currentImgIndex++;
+
+  document
+    .getElementsByClassName("title")
+    [currentTitleIndex].classList.remove("active");
+
+  document
+    .getElementsByClassName("description")
+    [currentTextIndex].classList.remove("active");
+
+  if (currentImgIndex < totalImages.length - 1) {
+    currentImgIndex++;
+    currentTitleIndex++;
+    currentTextIndex++;
+  } else {
+    currentImgIndex = 0;
+    currentTitleIndex = 0;
+    currentTextIndex = 0;
+  }
+
   document
     .getElementsByClassName("inactive")
     [currentImgIndex].classList.add("active");
 
-  // title
-  document
-    .getElementsByClassName("title")
-    [currentTitleIndex].classList.remove("active");
-  currentTitleIndex++;
   document
     .getElementsByClassName("title")
     [currentTitleIndex].classList.add("active");
 
-  // description
-  document
-    .getElementsByClassName("description")
-    [currentTextIndex].classList.remove("active");
-  currentTextIndex++;
   document
     .getElementsByClassName("description")
     [currentTextIndex].classList.add("active");
@@ -97,25 +108,33 @@ prevBtn.addEventListener("click", function () {
   document
     .getElementsByClassName("inactive")
     [currentImgIndex].classList.remove("active");
-  currentImgIndex--;
+
+  document
+    .getElementsByClassName("title")
+    [currentTitleIndex].classList.remove("active");
+
+  document
+    .getElementsByClassName("description")
+    [currentTextIndex].classList.remove("active");
+
+  if (currentImgIndex > 0) {
+    currentImgIndex--;
+    currentTitleIndex--;
+    currentTextIndex--;
+  } else {
+    currentImgIndex = totalImages.length - 1;
+    currentTitleIndex = totalImages.length - 1;
+    currentTextIndex = totalImages.length - 1;
+  }
+
   document
     .getElementsByClassName("inactive")
     [currentImgIndex].classList.add("active");
 
-  // title
-  document
-    .getElementsByClassName("title")
-    [currentTitleIndex].classList.remove("active");
-  currentTitleIndex--;
   document
     .getElementsByClassName("title")
     [currentTitleIndex].classList.add("active");
 
-  // description
-  document
-    .getElementsByClassName("description")
-    [currentTextIndex].classList.remove("active");
-  currentTextIndex--;
   document
     .getElementsByClassName("description")
     [currentTextIndex].classList.add("active");
