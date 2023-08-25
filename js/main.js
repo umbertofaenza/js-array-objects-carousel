@@ -31,10 +31,7 @@ const images = [
 const cardsEl = document.getElementById("cards");
 const nextBtn = document.getElementById("next-btn");
 const prevBtn = document.getElementById("prev-btn");
-
 const totalImages = document.getElementsByClassName("inactive");
-// const totalTitles = document.getElementsByClassName("inactive");
-// const totalDescription = document.getElementsByClassName("inactive");
 
 //* insert images on page html
 for (const object of images) {
@@ -104,7 +101,6 @@ nextBtn.addEventListener("click", function () {
 
 //* previous image button
 prevBtn.addEventListener("click", function () {
-  // image
   document
     .getElementsByClassName("inactive")
     [currentImgIndex].classList.remove("active");
