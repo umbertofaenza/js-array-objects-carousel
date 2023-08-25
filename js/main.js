@@ -1,4 +1,4 @@
-// array of images
+//** array of images
 const images = [
   {
     image: "img/01.webp",
@@ -27,12 +27,12 @@ const images = [
   },
 ];
 
-// global
+//* global
 const cardsEl = document.getElementById("cards");
 const nextBtn = document.getElementById("next-btn");
 const prevBtn = document.getElementById("prev-btn");
 
-// insert images on page html
+//* insert images on page html
 for (const object of images) {
   cardsEl.innerHTML += `
   <img class="inactive" src="${object.image}">
@@ -43,81 +43,79 @@ for (const object of images) {
     `;
 }
 
-// set first image to show
+//* set first image to show
 let currentImgIndex = 0;
 document
   .getElementsByClassName("inactive")
   [currentImgIndex].classList.add("active");
 
-// set first title to show
+//* set first title to show
 let currentTitleIndex = 0;
 document
   .getElementsByClassName("title")
   [currentTitleIndex].classList.add("active");
 
-// set first description to show
+//* set first description to show
 let currentTextIndex = 0;
 document
   .getElementsByClassName("description")
   [currentTextIndex].classList.add("active");
 
-// next image button
+//* next image button
 nextBtn.addEventListener("click", function () {
+  // image
   document
     .getElementsByClassName("inactive")
     [currentImgIndex].classList.remove("active");
-
-  document
-    .getElementsByClassName("title")
-    [currentTitleIndex].classList.remove("active");
-
-  document
-    .getElementsByClassName("description")
-    [currentTextIndex].classList.remove("active");
-
   currentImgIndex++;
-  currentTitleIndex++;
-  currentTextIndex++;
-
   document
     .getElementsByClassName("inactive")
     [currentImgIndex].classList.add("active");
 
+  // title
+  document
+    .getElementsByClassName("title")
+    [currentTitleIndex].classList.remove("active");
+  currentTitleIndex++;
   document
     .getElementsByClassName("title")
     [currentTitleIndex].classList.add("active");
 
+  // description
+  document
+    .getElementsByClassName("description")
+    [currentTextIndex].classList.remove("active");
+  currentTextIndex++;
   document
     .getElementsByClassName("description")
     [currentTextIndex].classList.add("active");
 });
 
-// previous image button
+//* previous image button
 prevBtn.addEventListener("click", function () {
+  // image
   document
     .getElementsByClassName("inactive")
     [currentImgIndex].classList.remove("active");
-
-  document
-    .getElementsByClassName("title")
-    [currentTitleIndex].classList.remove("active");
-
-  document
-    .getElementsByClassName("description")
-    [currentTextIndex].classList.remove("active");
-
   currentImgIndex--;
-  currentTitleIndex--;
-  currentTextIndex--;
-
   document
     .getElementsByClassName("inactive")
     [currentImgIndex].classList.add("active");
 
+  // title
+  document
+    .getElementsByClassName("title")
+    [currentTitleIndex].classList.remove("active");
+  currentTitleIndex--;
   document
     .getElementsByClassName("title")
     [currentTitleIndex].classList.add("active");
 
+  // description
+  document
+    .getElementsByClassName("description")
+    [currentTextIndex].classList.remove("active");
+  currentTextIndex--;
   document
     .getElementsByClassName("description")
     [currentTextIndex].classList.add("active");
